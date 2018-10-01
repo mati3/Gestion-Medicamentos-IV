@@ -3,7 +3,7 @@ rvm:
  - 2.3.1
 before_install:
  - gem install rspec
- - gem install blundle
+ - gem install bundle
  - bundle install
  
 script:
