@@ -1,5 +1,10 @@
 language: ruby
 rvm:
- - 2.5.1
- - jruby
+ - 2.3.1
+before_install:
+ - gem install rspec
+ - gem install blundle
+ - bundle install
  
+script:
+ inspec exec test.rb
