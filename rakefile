@@ -1,4 +1,5 @@
-task default: %w[test]
+#task default: %w[test]
+require 'rspec/core/rake_task'
 
 task :test do
   ruby 'testing/test_funciones.rb'
