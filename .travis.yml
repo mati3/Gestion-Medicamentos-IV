@@ -5,5 +5,8 @@ before_install:
  - gem install rspec
  - gem install bundle
  - bundle install
+ - gem install inspec
  
+script:
+ inspec exec rakefile
 
