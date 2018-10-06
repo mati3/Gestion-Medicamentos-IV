@@ -1,22 +1,70 @@
-# Proyecto-IV
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-class  Funciones
 
-  def  initialize ( num ) 
-    raise unless num.is_a?(Numeric)
-    @x  =  num 
-  end
+class Medicamento
+	
+	@@contador = 10 # suponemos pedido mínimo 
+	
+	def initialize(nomb, prosp, cad, ident)
+		@nombre = nomb
+		@prospecto = prosp
+		@caducidad = cad
+		@identificador = ident
+		setMasContador()
+	end
+	
+	def setNombre(n)
+		@nombre = n
+	end
+	
+	def getNombre()
+		return @nombre
+	end
 
-  def  add ( y ) 
-    @x  +  y 
-  end
+	def setProspecto(p)
+		@prospecto = p
+	end
 
-  def  multiply ( y ) 
-    @x  *  y 
-  end
-  
-  def metodo
-  	true
-  end
+	def getProspecto()
+		return @prospecto
+	end
+		
+	def setCaducidad(cad)
+		@caducidad = cad
+	end
 
+	def getCaducidad()
+		return @caducidad
+	end
+		
+	def setMasContador()
+		@@contador = @@contador+1
+	end
+
+	def setMenosContador()
+		@@contador = @@contador-1
+	end
+
+	def getContador()
+		return @@contador
+	end
+		
+	def setIdentificador(i)
+		@identificador = i
+	end
+
+	def getIdentificador()
+		return @identificador
+	end
+
+	def to_s
+		cadena = " Medicamento: nombre: #{@nombre}
+		Prospecto : #{@prospecto}
+		Caducidad : #{@caducidad}
+		Identificador: #{ @identificador}"
+		return cadena
+	end
 end
+
+

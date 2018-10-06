@@ -2,23 +2,31 @@
 
 require_relative  'src/funciones'
 require  'test/unit'
- 
-class  TestFunciones  <  Test::Unit::TestCase
+require  'test/unit'
+require "json" 
 
-  def setup # codigo antes de cada prueba
-  	@claseLocal = Funciones.new(2)
-  end
- 
-  def  test_simple 
-  	assert_equal(true, @claseLocal.metodo )
-    assert_equal(4, @claseLocal.add(2) )
-    assert_equal(6, @claseLocal.multiply(3) ) 
-    assert @claseLocal.multiply(3) == 6 , " se espera que sea multiplo"
-  end
-  
-  def teardown
-  	# codigo despues de cada prueba
-  end
-  
- 
+class TestMyMedicina <  Test::Unit::TestCase
+	
+	def setup 
+		file = File.read('src/medicamentos.json')
+		data_hash = JSON.parse(file)
+		
+		@medicamento = Medicamento.new(data_hash['nombre'], data_hash['prospecto'], data_hash['caducidad'], data_hash['identificador'])
+	end
+
+	def test_medicina_datos()
+		assert @medicamento.getNombre == "antiviral", "el nombre no es correcto"
+		assert @medicamento.getProspecto == "Este medicamento ayuda a combatir los virus", " prospecto erroneo "
+		assert @medicamento.getCaducidad == "2018-10-10", " Fecha caducidad erronea"
+		assert @medicamento.getIdentificador == "001", " identificador erroneo"
+	end
+	
+	def test_med_acabada()	
+		refute @medicamento.getContador <= 5 , "solo me quedan 5 de esta medicina"
+	end
+	
+	def test_med_caduca()
+		refute @medicamento.getCaducidad == Time.now.strftime("%F"), "hoy caduca este medicamento"
+	end
+	
 end
