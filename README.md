@@ -16,55 +16,16 @@ Vamos a hacer una base de datos de medicamentos para un hospital o similar, se p
 
 ### Desarrollo del proyecto:
 
-**Lo primero que hacemos es añadir la integración continua con [Travis-CI](https://travis-ci.com/), me doy de alta con la cuenta de git y enlazo mi proyecto.**
+Vamos a testear la clase "funciones" incluida en nuestro directorio "/src", la cual crea un nuevo objeto medicamento con los atributos que le corresponden (nombre, prospecto, fecha caducidad, id).
 
-Añadimos a nuestro proyecto el archivo .travis.yml
+Lo primero que hacemos es añadir la integración continua con [Travis-CI](https://travis-ci.com/), Enlace a el badge de Travis : [![Build Status](https://travis-ci.com/mati3/Gestion-Medicamentos-IV.svg?branch=master)](https://travis-ci.com/mati3/Gestion-Medicamentos-IV)
 
-      language: ruby
-      rvm:
-       - 2.3.1
-      before_install:
-       - gem install inspec
-       - gem install bundle
-       - bundle install
+Para instalar clonamos este repositorio
 
-      script:
-      inspec exec test.rb
+  * git clone https://github.com/mati3/Gestion-Medicamentos-IV.git
 
- Enlace a el badge de Travis : [![Build Status](https://travis-ci.com/mati3/Gestion-Medicamentos-IV.svg?branch=master)](https://travis-ci.com/mati3/Gestion-Medicamentos-IV)
+Para testear en local la clase poner en terminal la siguiente orden:
 
-**Vamos a hacer un desarrollo basado en pruebas, para el marco de test, ruby usa [rspec](https://github.com/rspec/rspec):**
+  * rake
 
-* gem install rspec
-
-* rspec --init
-
-* rspec test_prueba.rb
-
-**Para el gestor de versiones usamos [nvm](https://github.com/rvm/ubuntu_rvm):**
-
-* sudo apt-get install software-properties-common
-
-* sudo apt-add-repository -y ppa:rael-gc/rvm
-
-* sudo apt-get update
-
-* sudo apt-get install rvm
-
-* rvm install ruby
-
-* rvm use 2.3.7version_elegida
-
-* ruby test_prueba.rb
-
-**Automatizamos la ejecución de nuestros test, para ello instalamos [rake](https://github.com/ruby/rake):**
-
-* gem install rake
-
-Añadimos a nuestro proyecto un archivo rakefile:
-
-      task default: %w[test]
-
-      task :test do
-        ruby "test/unittest.rb"
-      end
+El test nos avisará si algun atributo no es el esperado, asi como si un medicamento está caducado o tenemos menos de 5 unidades de ese medicamento. El test se ejecuta con un solo medicamento, habria que hacer un test para cada medicamento que queramos incluir en nuestra base de datos.
