@@ -1,5 +1,4 @@
-task default: "test/%w[test]"
-#require 'rspec/core/rake_task'
+task default: 'test/*_test.rb'
 
 task :test do
   ruby 'test/*_test.rb'
