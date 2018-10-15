@@ -1,1 +1,1 @@
-web: ruby sinatra/myapp.rb 
+web: rackup
