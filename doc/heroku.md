@@ -15,7 +15,7 @@ Crear la aplicación y enlazarla a nuestro proyecto en git.
 
 ![imagen](img/heroku9.png)
 
-Podemos ver que requiere el archivo gemfile.lock, para generar dicho archivo desde linea de comando ejecutamos bundle install, lo agregamos a nuestro proyecto.
+Podemos ver que requiere el archivo gemfile.lock. Para generar dicho archivo desde linea de comando ejecutamos bundle install, lo agregamos a nuestro proyecto.
 
 ![imagen](img/bundleinstal.png)
 
