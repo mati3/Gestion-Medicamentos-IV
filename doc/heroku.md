@@ -1,5 +1,5 @@
 
-## Despliegue en heroku
+## Despliegue en heroku [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://app-gestion-medicamentos.herokuapp.com)
 
 Darse de alta en heroku
 
@@ -25,7 +25,7 @@ Ya tenemos la respuesta esperada:
 
 ** Documentos necesarios **
 
-Necesita un archivo Procfile junto con su config.ru para decirle a Heroku cómo ejecutar su aplicación.
+Necesitaremos un archivo Procfile junto con  config.ru para decirle a Heroku cómo ejecutar nuestra aplicación.
 
  * [procfile](https://devcenter.heroku.com/articles/procfile#deploying-to-heroku)
 
@@ -74,9 +74,9 @@ Necesita un archivo Procfile junto con su config.ru para decirle a Heroku cómo 
 
 * heroku open
 
-![imagen](img/error.png)
+![imagen](img/statusok.png)
 
-Tanto desde la web como desde terminal, de forma remota nos da el mismo error. buscando en los log, el tiempo de espera determinado para el servidor sobrepasa el limite esperado y la aplicación aborta.
+Tanto desde la web como desde terminal, de forma remota nos da la misma salida.
 
 Podemos ver log directamente en la web, open app / more --> view logs
 

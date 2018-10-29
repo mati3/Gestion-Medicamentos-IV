@@ -14,6 +14,8 @@ class Medicamento
 		setMasContador()
 	end
 	
+	public
+	
 	def setNombre(n)
 		@nombre = n
 	end
@@ -64,6 +66,13 @@ class Medicamento
 		Caducidad : #{@caducidad}
 		Identificador: #{ @identificador}"
 		return cadena
+	end
+	
+	def to_s_json
+		{"nombre" => @nombre ,
+		"prospecto" => @prospecto,
+		"caducidad" => @caducidad,
+		"identificador" => @identificador}.to_json
 	end
 end
 

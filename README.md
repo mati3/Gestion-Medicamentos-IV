@@ -10,7 +10,7 @@ Vamos a hacer una base de datos de medicamentos para un hospital o similar, se p
 * Como editor de texto ya tenemos Atom.
 * La base de datos a usar será alguna de las siguientes: MySQL, MariaDB, PostgreSQL .
 * Tenemos RubyGems como sistema para gestionar bibliotecas.
-* Para hacer el despliegue en la nube intentaremos usar Azure
+* El despliegue en la nube se ha echo con Heroku, es gratuito y no nos pide tantos tramites para su uso.
 * Como framework para servicios web hemos decidido usar [sinatra](http://sinatrarb.com/), es open source, es flexible y rápido, además su uso es muy simple.
 * Para la integración continua hemos usado [Travis-CI](https://travis-ci.com/), hemos elegido este sistema porque se activa automáticamente al hacer un push a nuestro repositorio git, además, es gratuito.
 
@@ -29,3 +29,30 @@ Para testear en local la clase poner en terminal la siguiente orden:
   * rake
 
 El test nos avisará si algun atributo no es el esperado, asi como si un medicamento está caducado o tenemos menos de 5 unidades de ese medicamento. El test se ejecuta con un solo medicamento, habria que hacer un test para cada medicamento que queramos incluir en nuestra base de datos.
+
+### Despliegue en heroku [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://app-gestion-medicamentos.herokuapp.com)
+
+Necesitamos los archivos procfile y config.ru, estos ficheros contienen información de configuración y se localizan en el directorio raíz del proyecto.
+
+Procfile es un archivo de texto simple que describe los componentes necesarios para ejecutar una aplicación. Es la forma de decirle a Heroku cómo ejecutar sus aplicaciones.
+
+Para iniciar nuestra aplicación modular usaremos config.ru, el cual nos permite usar cualquier handler Rack, en nuestro caso Heroku.
+
+Enlace a nuestra documentación del despliegue en [Heroku](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/heroku.md)
+
+Para ejecutar en local:
+
+    Probar un fichero:
+      * ruby myapp.rb
+
+    Probar aplicación desde directorio raiz:
+      * rackup
+
+    Probar desde Heroku:
+      * Heroku local web
+
+Ejecutar en la web:
+      * heroku open.
+
+
+Para probar la clase "medicamento" en Heroku añadir a la ruta del deploy: "/medicamento"
