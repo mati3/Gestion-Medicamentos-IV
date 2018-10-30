@@ -30,7 +30,7 @@ Para testear en local la clase poner en terminal la siguiente orden:
 
 El test nos avisará si algun atributo no es el esperado, asi como si un medicamento está caducado o tenemos menos de 5 unidades de ese medicamento. El test se ejecuta con un solo medicamento, habria que hacer un test para cada medicamento que queramos incluir en nuestra base de datos.
 
-### Despliegue en heroku [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://app-gestion-medicamentos.herokuapp.com)
+### Despliegue en heroku [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://app-gestion-medicamentos.herokuapp.com/)
 
 Necesitamos los archivos procfile y config.ru, estos ficheros contienen información de configuración y se localizan en el directorio raíz del proyecto.
 
