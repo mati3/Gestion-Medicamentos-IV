@@ -2,5 +2,5 @@ task default: %w[test]
 #require 'rspec/core/rake_task'
 
 task :test do
-  ruby 'test.rb'
+  ruby 'testing/test.rb'
 end

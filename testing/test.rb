@@ -1,6 +1,6 @@
 # Proyecto-IV mi primer test
 
-require_relative  'src/funciones'
+require_relative  '../src/funciones'
 require  'test/unit'
 require  'test/unit'
 require "json" 
