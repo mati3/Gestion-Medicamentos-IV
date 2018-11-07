@@ -56,3 +56,5 @@ Ejecutar en la web:
 
 
 Para probar la clase "medicamento" en Heroku añadir a la ruta del deploy: "/medicamento"
+
+Si el enlace de Heroku sale Forbidden, recargar la pagina.
