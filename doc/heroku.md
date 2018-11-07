@@ -29,18 +29,18 @@ Necesitaremos un archivo Procfile junto con  config.ru para decirle a Heroku có
 
  * [procfile](https://devcenter.heroku.com/articles/procfile#deploying-to-heroku)
 
-        require 'rubygems'
-        require 'sinatra'
-        require 'bundler'
+        web: rackup
 
-        Bundler.require
-
-        require './sinatra/myapp'
-        run Sinatra::Application
 
  * [config.ru](https://devcenter.heroku.com/articles/rack)
 
-        web: rackup
+       require 'rubygems'
+       require 'sinatra'
+       require 'bundler'
+
+       Bundler.require
+
+       require './sinatra/myapp'
 
 ### Tenemos dos formas de iniciar la aplicación:
 
