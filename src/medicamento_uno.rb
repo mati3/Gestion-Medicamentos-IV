@@ -4,67 +4,45 @@
 
 class Medicamento
 	
-	@@contador = 10 # suponemos pedido mínimo 
-	
+	attr_accessor :nombre, :prospecto, :caducidad, :identificador
+		
 	def initialize(nomb, prosp, cad, ident)
 		@nombre = nomb
 		@prospecto = prosp
 		@caducidad = cad
 		@identificador = ident
-		setMasContador()
+		@contador = 0
+		setCompro(10)
 	end
 	
 	public
-	
-	def setNombre(n)
-		@nombre = n
-	end
-	
-	def getNombre()
-		return @nombre
-	end
-
-	def setProspecto(p)
-		@prospecto = p
-	end
-
-	def getProspecto()
-		return @prospecto
-	end
-		
-	def setCaducidad(cad)
-		@caducidad = cad
-	end
-
-	def getCaducidad()
-		return @caducidad
-	end
-		
+			
 	def setMasContador()
-		@@contador = @@contador+1
+		@contador = @contador+1
 	end
 
 	def setMenosContador()
-		@@contador = @@contador-1
+		@contador = @contador-1
+	end
+
+	def setCompro(n)
+		@contador = @contador+n
+	end
+
+	def setVendo(n)
+		@contador = @contador-n
 	end
 
 	def getContador()
-		return @@contador
-	end
-		
-	def setIdentificador(i)
-		@identificador = i
-	end
-
-	def getIdentificador()
-		return @identificador
+		return @contador
 	end
 
 	def to_s
 		cadena = " Medicamento: nombre: #{@nombre}
 		Prospecto : #{@prospecto}
 		Caducidad : #{@caducidad}
-		Identificador: #{ @identificador}"
+		Identificador: #{ @identificador}
+		contador: #{ @contador}"
 		return cadena
 	end
 	
@@ -72,7 +50,8 @@ class Medicamento
 		{"nombre" => @nombre ,
 		"prospecto" => @prospecto,
 		"caducidad" => @caducidad,
-		"identificador" => @identificador}.to_json
+		"identificador" => @identificador,
+		"contador" => getContador}.to_json
 	end
 end
 

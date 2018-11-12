@@ -24,12 +24,12 @@ class MyApp < Sinatra::Base
   before do
   	env["rack.errors"] =  error_logger
     content_type 'application/json'
-	file = File.read('../src/UnMedicamento.json') # cambiar a src/medicamentos.json para que funcione con heroku
+	file = File.read('src/UnMedicamento.json') 
     data_hash = JSON.parse(file)
     @medicamento = Medicamento.new(data_hash['nombre'], data_hash['prospecto'], data_hash['caducidad'], data_hash['identificador'])
     ############################### ALMACEN ######################
     
-    file2 = File.read('../src/TodosLosMedicamentos.json')
+    file2 = File.read('src/TodosLosMedicamentos.json')
     data_hash2 = JSON.parse(file2)
     @medicamentos = []
     i=0
@@ -54,11 +54,20 @@ class MyApp < Sinatra::Base
   	erb :medicamento
   end
   
-    get '/listaMedicamentos' do
+  get '/listaMedicamentos' do
   	content_type :json
   	@almacen
   	erb :almacen
   end
+
+=begin  #para que busque lo que contenga aux.
+  get '/listaMedicamentos/:aux/' do 
+  	content_type :json
+  	@almacen
+  	@n = params[:aux]
+  	erb :buscador
+  end
+=end
   
   run!
   
