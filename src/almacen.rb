@@ -4,16 +4,19 @@
 
 	class Almacen
 		
-		attr_accessor :arrayMedicamentos, :medActual
+		attr_accessor :arrayMedicamentos, :MAXMEDICAMENTOS
 		
 		@@MAXMEDICAMENTOS = 4
 		
 		def initialize(medicamentos)
 			@arrayMedicamentos = medicamentos
-			@medActual = nil
 		end
 		
 		public
+		
+		def getMaxMedicamentos
+			@@MAXMEDICAMENTOS
+		end
 		
 		def setComprar(med, n)
 			med.setCompro(n)
@@ -32,46 +35,6 @@
 				end
 			end
 		end
-		
-		def setMedActual(med) # decido poner este metodo para recorrer el array una sola vez
-			@arrayMedicamentos.each do |j|
-				if j.nombre == med.nombre
-					@medActual = med
-				end
-			end
-		end
-		
-		def setNombre(n)
-			@medActual.nombre = n
-		end
-		
-		def getNombre
-			@medActual.nombre
-		end
-		
-		def setProspecto(n)
-			@medActual.prospecto = n
-		end
-		
-		def getProspecto
-			@medActual.prospecto
-		end
-		
-		def setCaducidad(n)
-			@medActual.caducidad = n
-		end
-		
-		def getCaducidad
-			@medActual.caducidad
-		end
-		
-		def setIdentificador(n)
-			@medActual.identificador = n
-		end
-
-		def getIdentificador
-			@medActual.identificador
-		end
 
 		def to_s
 			cadena = "\n Todos los medicamentos:\n"
@@ -86,6 +49,14 @@
 			cadena +=@arrayMedicamentos[1].to_s_json + ","
 			cadena +=@arrayMedicamentos[2].to_s_json + ","
 			cadena +=@arrayMedicamentos[3].to_s_json + "]"
+			return cadena
+		end
+		
+		def to_json_nombres
+			cadena ="[" + @arrayMedicamentos[0].nombre + ","
+			cadena +=@arrayMedicamentos[1].nombre + ","
+			cadena +=@arrayMedicamentos[2].nombre + ","
+			cadena +=@arrayMedicamentos[3].nombre + "]"
 			return cadena
 		end
 		

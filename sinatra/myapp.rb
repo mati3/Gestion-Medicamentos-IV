@@ -59,6 +59,12 @@ class MyApp < Sinatra::Base
   	@almacen
   	erb :almacen
   end
+  
+    get '/nombres' do
+  	content_type :json
+  	@almacen
+  	erb :nombres
+  end
 
 =begin  #para que busque lo que contenga aux.
   get '/listaMedicamentos/:aux/' do 
