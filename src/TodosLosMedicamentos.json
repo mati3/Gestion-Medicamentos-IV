@@ -1,0 +1,27 @@
+[  	
+	{
+            "nombre":"antiviral",
+            "prospecto" : " Este medicamento ayuda a combatir los virus ",
+		    "caducidad" : "20/02/2022",
+		    "identificador": "001"
+        },
+        {
+            "nombre":"anestésico",
+            "prospecto" : " con este medicamento no te duele na ",
+		    "caducidad" : "03/03/2033",
+		    "identificador": "002"
+        },
+        {
+            "nombre":"analgésico",
+            "prospecto" : " Con este medicamento te sientes mejor ",
+		    "caducidad" : "31/11/2018",
+		    "identificador": "003"
+        },
+        {
+            "nombre":"anitalergico",
+            "prospecto" : " Este medicamento te ayuda con las alergiaas ",
+		    "caducidad" : "31/01/2019",
+		    "identificador": "004"
+        }
+    
+]

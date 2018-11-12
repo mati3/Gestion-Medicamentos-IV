@@ -1,6 +1,6 @@
 # Proyecto-IV mi primer test
 
-require_relative  '../src/funciones'
+require_relative  '../src/medicamento_uno'
 require  'test/unit'
 require  'test/unit'
 require "json" 
@@ -8,7 +8,7 @@ require "json"
 class TestMyMedicina <  Test::Unit::TestCase
 	
 	def setup 
-		file = File.read('src/medicamentos.json')
+		file = File.read('src/UnMedicamento.json')
 		data_hash = JSON.parse(file)
 		
 		@medicamento = Medicamento.new(data_hash['nombre'], data_hash['prospecto'], data_hash['caducidad'], data_hash['identificador'])

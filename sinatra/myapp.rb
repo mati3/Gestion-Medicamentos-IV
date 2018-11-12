@@ -3,7 +3,8 @@ require 'rubygems'
 require 'sinatra'
 require 'json'
 require 'logger'
-require_relative  '../src/funciones'
+require_relative  '../src/medicamento_uno'
+require_relative  '../src/almacen'
 
 set :logger, Logger.new("STDOUT")
 
@@ -23,9 +24,21 @@ class MyApp < Sinatra::Base
   before do
   	env["rack.errors"] =  error_logger
     content_type 'application/json'
-	file = File.read('src/medicamentos.json')
+	file = File.read('../src/UnMedicamento.json') # cambiar a src/medicamentos.json para que funcione con heroku
     data_hash = JSON.parse(file)
     @medicamento = Medicamento.new(data_hash['nombre'], data_hash['prospecto'], data_hash['caducidad'], data_hash['identificador'])
+    ############################### ALMACEN ######################
+    
+    file2 = File.read('../src/TodosLosMedicamentos.json')
+    data_hash2 = JSON.parse(file2)
+    @medicamentos = []
+    i=0
+    data_hash2.each do |value|
+    	@medicamentos[i] = Medicamento.new(value['nombre'], value['prospecto'], value['caducidad'], value['identificador'])
+    	i=i+1
+    end
+    @almacen = Almacen.new(@medicamentos)
+    ############################################################
   end
 
   get '/' do
@@ -39,6 +52,12 @@ class MyApp < Sinatra::Base
   	content_type :json
   	@medicamento
   	erb :medicamento
+  end
+  
+    get '/listaMedicamentos' do
+  	content_type :json
+  	@almacen
+  	erb :almacen
   end
   
   run!
