@@ -41,3 +41,5 @@ Elegimos el proyecto de GitHub:
 Finalmente queda configurado docker hub:
 
 ![imagen](img/docker-hub-fin1.png)
+
+Para interactuar con docker hub desde terminal hemos encontrado [este enlace](https://carloszr.com/crear-cuenta-docker-hub-subir-imagen/)

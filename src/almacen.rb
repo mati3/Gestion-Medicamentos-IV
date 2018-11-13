@@ -53,11 +53,10 @@
 		end
 		
 		def to_json_nombres
-			cadena ="[" + @arrayMedicamentos[0].nombre + ","
-			cadena +=@arrayMedicamentos[1].nombre + ","
-			cadena +=@arrayMedicamentos[2].nombre + ","
-			cadena +=@arrayMedicamentos[3].nombre + "]"
-			return cadena
+			{"nombre del primer medicamento" => @arrayMedicamentos[0].nombre,
+			"nombre del segundo medicamento" => @arrayMedicamentos[1].nombre,
+			"nombre del tercer medicamento" => @arrayMedicamentos[2].nombre,
+			"nombre del cuarto medicamento" => @arrayMedicamentos[3].nombre}.to_json
 		end
 		
 	end
