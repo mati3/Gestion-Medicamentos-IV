@@ -43,3 +43,5 @@ Finalmente queda configurado docker hub:
 ![imagen](img/docker-hub-fin1.png)
 
 Para interactuar con docker hub desde terminal hemos encontrado [este enlace](https://carloszr.com/crear-cuenta-docker-hub-subir-imagen/)
+
+Enlace a [despliegue en Heroku](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/docker-heroku.md) de nuestro contenedor Docker, alojado en DockerHub

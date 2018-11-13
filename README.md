@@ -71,6 +71,8 @@ Enlace a la documentación [Docker](https://github.com/mati3/Gestion-Medicamento
 
 Enlace a la documentación de [DockerHub](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/docker-hub.md) del Proyecto
 
+Enlace a [despliegue en Heroku](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/docker-heroku.md) de nuestro contenedor Docker, alojado en DockerHub
+
 Enlace a [DockerHub](https://hub.docker.com/r/mati331/gestion-medicamentos-iv/)
 
 

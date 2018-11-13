@@ -1,5 +1,5 @@
 
-## Despliegue en Heroku de nuestro contenedor Docker, alojado en Docker Hub
+## Despliegue en Heroku de nuestro contenedor Docker, alojado en DockerHub
 
 Seguimos [esta](https://medium.com/travis-on-docker/how-to-run-dockerized-apps-on-heroku-and-its-pretty-great-76e07e610e22) guía.
 
