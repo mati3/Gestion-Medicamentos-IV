@@ -1,8 +1,8 @@
-FROM ruby:2.5
+FROM ruby:latest
+MAINTAINER Matilde Cabrera <mati331@correo.ugr.es>
 
 # lanzar errores si Gemfile ha sido modificado desde Gemfile.lock
 RUN bundle config --global frozen 1
-MAINTAINER Matilde Cabrera <mati331@correo.ugr.es>
 
 
 COPY Gemfile Gemfile.lock ./
