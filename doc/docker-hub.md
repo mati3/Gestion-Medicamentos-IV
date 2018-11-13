@@ -40,4 +40,4 @@ Elegimos el proyecto de GitHub:
 
 Finalmente queda configurado docker hub:
 
-![imagen](img/docker-hub-fin.png)
+![imagen](img/docker-hub-fin1.png)
