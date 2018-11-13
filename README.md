@@ -72,3 +72,6 @@ Enlace a la documentación [Docker](https://github.com/mati3/Gestion-Medicamento
 Enlace a la documentación de [DockerHub](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/docker-hub.md) del Proyecto
 
 Enlace a [DockerHub](https://hub.docker.com/r/mati331/gestion-medicamentos-iv/)
+
+
+**Nota:** hemos añadido log de acceso y error a nuestra aplicación, estas se van guardando en "/sinatra/log/error.log" y en "/sinatra/log/access.log"
