@@ -57,4 +57,4 @@ Probamos los servicios desde el contenedor, los test con rake y la aplicación c
 
 ![imagen](img/docker-rake.png)
 
-Ahora nos daremos de alta en Docker Hub para poder desplegar el contenedor en un Paas. Enlace a la [documentación](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/docker-hub_heroku.md)
+Ahora nos daremos de alta en Docker Hub para poder desplegar el contenedor en un Paas. Enlace a la [documentación de docker hub](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/docker-hub.md)
