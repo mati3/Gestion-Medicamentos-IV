@@ -7,12 +7,13 @@ Vamos a hacer una base de datos de medicamentos para un hospital o similar, se p
 ## Herramientas
 
 * Usaremos Ruby como lenguaje de programación.
-* Como editor de texto ya tenemos Atom.
-* La base de datos a usar será alguna de las siguientes: MySQL, MariaDB, PostgreSQL .
-* Tenemos RubyGems como sistema para gestionar bibliotecas.
+* Hemos usado contenedores Docker para ejecutar nuestra aplicación. Nuestro contenedor Docker lo alojamos en Docker Hub, un repositorio donde mantener imágenes de Docker. Docker Hub es open source bajo la licencia de Apache.
 * El despliegue en la nube se ha echo con Heroku, es gratuito y no nos pide tantos tramites para su uso.
-* Como framework para servicios web hemos decidido usar [sinatra](http://sinatrarb.com/), es open source, es flexible y rápido, además su uso es muy simple.
 * Para la integración continua hemos usado [Travis-CI](https://travis-ci.com/), hemos elegido este sistema porque se activa automáticamente al hacer un push a nuestro repositorio git, además, es gratuito.
+* Como framework para servicios web hemos decidido usar [sinatra](http://sinatrarb.com/), es open source, es flexible y rápido, además su uso es muy simple.
+* Tenemos RubyGems como sistema para gestionar bibliotecas.
+* Como editor de texto ya tenemos Atom.
+* La base de datos a usar será alguna de las siguientes: MySQL, MariaDB, PostgreSQL, Mongodb .
 
 ### Desarrollo del proyecto:
 
@@ -52,9 +53,22 @@ Para ejecutar en local:
       * Heroku local web
 
 Ejecutar en la web:
+
       * heroku open.
 
 
-Para probar la clase "medicamento" en Heroku añadir a la ruta del deploy: "/medicamento"
+Podemos añadir diferentes rutas al deploy:
 
-Si el enlace de Heroku sale Forbidden, recargar la pagina.
+      /medicamento
+      /listaMedicamentos
+      /nombres
+
+Nota: Si el enlace de Heroku sale Forbidden, recargar la pagina.
+
+### Docker y DockerHub
+
+Enlace a la documentación [Docker](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/docker.md) del Proyecto
+
+Enlace a la documentación de [DockerHub](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/docker-hub.md) del Proyecto
+
+Enlace a [DockerHub](https://hub.docker.com/r/mati331/gestion-medicamentos-iv/)
