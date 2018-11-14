@@ -11,4 +11,4 @@ RUN bundle install
 COPY . .
 
 # Comando predeterminado, ejecutando la aplicación como un servicio
-CMD ["bundle", "rackup", "config.ru", "-p", "80", "-s","--host", "0.0.0.0"]
+CMD ["bundle", "rackup", "config.ru"]
