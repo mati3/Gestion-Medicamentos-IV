@@ -5,11 +5,13 @@ Seguimos [esta](https://medium.com/travis-on-docker/how-to-run-dockerized-apps-o
 
 Obtenemos un token de heroku:
 
-![imagen](img/heroku-token.png)
+![imagen](img/heroku-token1.png)
 
 Usamos el token que nos da Heroku para iniciar sesión en el registro de Docker:
 
-![imagen](img/docker-login.png)
+    docker login --username=_ --password={token_anterior} registry.heroku.com
+
+![imagen](img/docker-login1.png)
 
 Nota: el correo electrónico y el nombre de usuario son en realidad el guión bajo, no los cambies.
 

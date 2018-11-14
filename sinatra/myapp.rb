@@ -6,7 +6,7 @@ require 'logger'
 require_relative  '../src/medicamento_uno'
 require_relative  '../src/almacen'
 
-set :logger, Logger.new("STDOUT")
+set :logger, #Logger.new("STDOUT")
 
 class MyApp < Sinatra::Base
 
