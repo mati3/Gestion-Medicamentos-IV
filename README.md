@@ -65,7 +65,9 @@ Podemos añadir diferentes rutas al deploy:
 
 Nota: Si el enlace de Heroku sale Forbidden, recargar la pagina.
 
-### Docker y DockerHub [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://docker-gestion-iv.herokuapp.com)
+### Docker y DockerHub 
+
+**Despliegue en el contenedor [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://docker-gestion-iv.herokuapp.com)**
 
 Enlace a la documentación [Docker](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/docker.md) del Proyecto
 
