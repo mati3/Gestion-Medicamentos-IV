@@ -46,8 +46,13 @@ class MyApp < Sinatra::Base
 	{:status => 'ok'}.to_json
   
   end
-
   
+  get '/status' do
+  	#redirect '/'
+  	content_type :json
+	{:status => 'ok'}.to_json
+  end
+   
   get '/medicamento' do
   	content_type :json
   	@medicamento

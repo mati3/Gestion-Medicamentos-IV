@@ -30,3 +30,5 @@ Para finalizar subimos nuestra imagen:
 ![imagen](img/docker-push1.png)
 
 Comprobamos desde Heroku:
+
+![imagen](img/docker-web.png)
