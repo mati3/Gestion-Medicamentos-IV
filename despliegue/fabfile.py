@@ -31,8 +31,8 @@ def Iniciar():
 
 vagrant up --provider=azure
 
-fab -f despliegue/fabfile.py -H vagrant@damp-dew-66.westeurope.cloudapp.azure.com Eliminar
-fab -f despliegue/fabfile.py -H vagrant@damp-dew-66.westeurope.cloudapp.azure.com Instalar
-fab -f despliegue/fabfile.py -H vagrant@damp-dew-66.westeurope.cloudapp.azure.com Iniciar
+fab -f despliegue/fabfile.py -H vagrant@ivgestion-ip.cloudapp.azure.com Eliminar
+fab -f despliegue/fabfile.py -H vagrant@ivgestion-ip.cloudapp.azure.com Instalar
+fab -f despliegue/fabfile.py -H vagrant@ivgestion-ip.cloudapp.azure.com Iniciar
 
 """
