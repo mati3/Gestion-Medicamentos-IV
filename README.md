@@ -79,3 +79,11 @@ Enlace a [DockerHub](https://hub.docker.com/r/mati331/gestion-medicamentos-iv/)
 
 
 **Nota:** hemos añadido log de acceso y error a nuestra aplicación, estas se van guardando en "/sinatra/log/error.log" y en "/sinatra/log/access.log"
+
+### Despliegue en la nuve de Azure
+
+Hemos utilizado Azure como LaaS, hemos hecho la orquestación de maquinas virtuales desde Vagrant y el aprovisionamiento del mismo con Ansible, el despliegue con Fabric. [Enlace a la documentación del despliegue](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/azure.md)
+
+Despliegue final: 104.45.66.250
+
+URL Despliegue final: http://ivgestion-ip.westeurope.cloudapp.azure.com/
