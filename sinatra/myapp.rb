@@ -10,6 +10,9 @@ set :logger, #Logger.new("STDOUT")
 
 class MyApp < Sinatra::Base
 
+set :bind, '0.0.0.0'
+set :port, 80
+
 ::Logger.class_eval { alias :write :'<<' }
   access_log = ::File.join(::File.dirname(::File.expand_path(__FILE__)),'log','access.log')
   access_logger = ::Logger.new(access_log)
