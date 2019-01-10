@@ -33,7 +33,7 @@ El orden de los pasos correctos para instalar Vagrant con Azure, serían:
 		    azure.client_secret = ENV['AZURE_CLIENT_SECRET']
 		    azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 
-		    azure.vm_image = ''
+		    azure.vm_image = 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-16_04-LTS-amd64-server-20181023-en-us-30GB'
 		    azure.resource_group_name = 'ivgestiongroup'
 		    azure.location = 'westeurope'
 		    azure.vm_size = 'Standard_DS1_v2'
