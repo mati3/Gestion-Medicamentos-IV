@@ -44,7 +44,8 @@ El orden de los pasos correctos para instalar Vagrant con Azure, serían:
 		  config.vm.provision :ansible do |ansible|
 		      ansible.playbook = "provision/playbook.yml"
 		  end
-
+			
+		end
 
 Explicamos cada elemento integrado en Vagrantfile:
 
