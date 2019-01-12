@@ -33,7 +33,6 @@ El orden de los pasos correctos para instalar Vagrant con Azure, serían:
 		    azure.client_secret = ENV['AZURE_CLIENT_SECRET']
 		    azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 
-		    azure.vm_image = 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-16_04-LTS-amd64-server-20181023-en-us-30GB'
 		    azure.resource_group_name = 'ivgestiongroup'
 		    azure.location = 'westeurope'
 		    azure.vm_size = 'Standard_DS1_v2'
@@ -44,7 +43,7 @@ El orden de los pasos correctos para instalar Vagrant con Azure, serían:
 		  config.vm.provision :ansible do |ansible|
 		      ansible.playbook = "provision/playbook.yml"
 		  end
-			
+
 		end
 
 Explicamos cada elemento integrado en Vagrantfile:
@@ -81,15 +80,16 @@ Por si queda alguna duda estos datos corresponden a los anteriores de la siguien
 
 **azure.subscription_id =** Para conocer tu suscripción a Azure usa la orden "azure account list". Para conocer que suscripción usas con tu aplicación usa "azure account show"
 
-**Importante**: Todas estas variables no pueden estár expuestas en ningún documento, así que para poder usarlas como variable de entorno las introduciremos en nuestro equipo de la siguiente forma:
+**Variables**: Todas estas variables no pueden estár expuestas en ningún documento, así que para poder usarlas como variable de entorno las introduciremos en nuestro equipo de la siguiente forma:
 
 	export AZURE_TENANT_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 	export AZURE_CLIENT_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 	export AZURE_CLIENT_SECRET="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 	export AZURE_SUBSCRIPTION_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
+Esto es solo una forma de hacerlo, podríamos tener varias suscripciones o equipos de trabajo, entonces tendríamos las credenciales en un archivo y las introduciríamos desde el mismo con vagrant.
 
-**azure.vm_image = 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-16_04-LTS-amd64-server-20181023-en-us-30GB ' -** imagen elegida para la maquina virtual, para elegir la imagen, primero nos hemos informado de las imagenes disponibles en la localización elegida, con "az vm image list --location westeurope --offer Ubuntu "
+**azure.vm_image =** imagen elegida para la maquina virtual, para elegir la imagen, primero nos hemos informado de las imagenes disponibles en la localización elegida, con "az vm image list --location westeurope --offer Ubuntu "
 
 		You are viewing an offline list of images, use --all to retrieve an up-to-date list
 		[
@@ -113,7 +113,7 @@ con esta información volvemos a preguntar con "az vm image list --location west
 		UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201612050  16.04.201612050
 		UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201612140  16.04.201612140
 
-Como me han quedado dudas de que maquina usar contrasto la información anterior con "azure vm image list | grep -i ubuntu-16 ". [Para mas información](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage)
+Nosotros no vamos a poner ninguna imagen especifica, instalará por defecto UbuntuServer Canonical 16.04-LTS Latest. [Para mas información](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage)
 
 **azure.resource_group_name = 'ivgestiongroup' -** nombre del grupo de gestión de mi aplicación.
 

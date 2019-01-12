@@ -1,57 +1,82 @@
 
 ## Despliegue de la aplicación en Azure.
 
+Para el despliegue en azure hemos elegido, para  la orquestación de maquinas virtuales Vagrant, para el aprovisionamiento Ansible, para el despliegue Fabric.
 
 ### Ansible
+
+Ansible es un motor de orquestación muy simple que automatiza toda clase de tareas necesarias para el aprovisionamiento de nuestra maquina. La hemos elegido porque es open-source y por la gran comunidad que la respalda, la documentación es excepcional.  
 
 Lo primero que hacemos es una prueba en local para gestionar con ansible una maquina virtual creada con vagran que clone nuestro repositorio e instale todo lo necesario.
 
 Con Vagrant init tenemos nuestro archivo Vagrantfile, el cual modificamos para que quede así:
 
-    Vagrant.configure("2") do |config|
+    Vagrant.configure('2') do |config|
 
-      config.vm.box = "bento/ubuntu-18.04"
+      config.vm.box = "bento/ubuntu-16.04"
       config.vm.network "forwarded_port", guest: 4567, host: 80, host_ip: "0.0.0.0"
 
-      config.vm.provision "ansible" do |ansible|
-          ansible.sudo = true
-          ansible.playbook = "ansible.yml"
-          ansible.verbose = "v"
-          ansible.host_key_checking = false
+      config.vm.network "private_network", ip: "192.168.56.100"
+
+      config.vm.provision :ansible do |ansible|
+          ansible.playbook = "provision/playbook.yml"
       end
+
+    end
 
 Instalo ansible con: sudo apt install ansible
 
 Genero archivo ansible playbook.yml el cual queda así:
 
-      - hosts: all
+    - hosts: all
       sudo: yes
       remote_user: vagrant   
       tasks:
-      - name: Actualizar sistema
-      apt: update_cache=yes     	
-      - name: Install git
-      apt: pkg=git state=present
-      - name: Clonar
-      git:  repo=https://github.com/mati3/Gestion-Medicamentos-IV.git dest=Gestion-Medicamentos-IV/ clone=yes force=yes  
-      - name: Build-essential
-      apt: pkg=build-essential state=present     
-      - name: Instala Ruby
-      apt: pkg=ruby state=present
-      - gem:
-          name=sinatra
-          state=latest
-      - gem:
-          name=bundle
-          state=latest
 
-Nota: Para errores  en la sintaxis de [YAML](http://wiki.ess3.net/yaml). Errores varios con [vagrant y ansible](http://databaseindex.blogspot.com/2018/03/)
+      - name: Update System
+        apt:
+          update_cache=yes  
+          upgrade=yes  
+
+      - name: Install git
+        apt: pkg=git state=present
+      - name: Clonar
+        git:  repo=https://github.com/mati3/Gestion-Medicamentos-IV.git dest=Gestion-Medicamentos-IV/ clone=yes force=yes  
+
+      - name: Install dependencies
+        apt: pkg={{item}} state=latest
+        with_items:
+          - build-essential
+          - ruby
+          - rubygems
+
+      - gem:
+          name=rake
+          state=present
+
+      - name: Install bundle  
+        become: yes
+        command:
+          bash -lc "gem install bundle"
+
+      - bundler:
+          state=present
+          gemfile=Gestion-Medicamentos-IV/Gemfile
+          deployment_mode=yes
+
+Nota: Para errores  en la sintaxis de [YAML](http://wiki.ess3.net/yaml).
+
+[Link al archivo playbook.yml](../provision/playbook.yml)
+
+[Link a la explicacion extendida de Ansible.](ansible.md)
 
 Ejecuto en terminal: vagrant up, vagrant ssh, cd /vagrant, compruebo que esta todo instalado. Primera parte realizada.
 
-![imagen](img/a_26.png)
-
 ![imagen](img/a_25.png)
+
+**Levantamos el servicio y comprobamos en el navegador:**
+
+![imagen](img/a_26.png)
 
 ### Configuración Azure
 
@@ -141,6 +166,10 @@ Si queremos asignarle roles, como mínimo seremos colaborador. Centro de acceso 
 
 ![imagen](img/a_21.png)
 
+Por ultimo creamos un servicio principal.
+
+![imagen](img/a_05.png)
+
 ### Vagrant
 
 Vamos a usar vagrant para crear y manejar nuestra maquina virtual en Azure, necesitamos un archivo Vagrantfile, con el cual definiremos el tipo de maquina requerida para nuestro proyecto y la aprovisionaremos.
@@ -157,39 +186,39 @@ Creamos la maquina virtual y todo lo necesario en Azure desde nuestra terminal:
 
 ### Fabric
 
-Para facilitar la implementación y la administración usamos Fabric, lo con la orden "sudo pip install -U 'fabric<2' " creamos una carpeta llamada "despliegue" donde generamos nuestro "fabfile.py", el cual queda con el siguiente aspecto:
+Para facilitar la implementación y la administración usamos Fabric.
+
+Instalo con la orden "sudo pip install -U 'fabric<2' ".
+
+Creamos una carpeta llamada "despliegue" donde generamos nuestro "fabfile.py", el cual queda con el siguiente aspecto:
 
 
       from fabric.api import *
 
-
-      def Instalar():
-      	""" Clonar repositorio """
-
-      	run('git clone https://github.com/mati3/Gestion-Medicamentos-IV.git')
-
-      	run('sudo apt-get update')
-      	run('sudo apt-get upgrade')
-      	run('sudo apt install build-essential')
-      	run('sudo apt install ruby')
-      	run('sudo gem install sinatra')
-      	run('sudo gem install bundle')
-      	run('cd Gestion-Medicamentos-IV && bundle install')
-
-      def Eliminar():
-      	""" Eliminar el repositorio """
-
+      def Remove():
       	run('sudo rm -rf ./Gestion-Medicamentos-IV')
 
-      def Iniciar():
-      	""" Run """
-      	run('cd Gestion-Medicamentos-IV && bundle exec rackup')
+      def Install():
+      	Remove()
+      	run('git clone https://github.com/mati3/Gestion-Medicamentos-IV.git')
+      	run('cd Gestion-Medicamentos-IV && bundle install')
+
+      def Run():
+      	run('cd Gestion-Medicamentos-IV && sudo bundle exec rackup',pty=False)
+
+      def Update():
+      	Install()
+      	Run()
 
 ### Ejecución
 
 Para probar la ejecución de nuestra aplicación con Fabric ejecutamos desde terminal:
 
-fab -f despliegue/fabfile.py -H vagrant@ivgestion-ip.cloudapp.azure.com Iniciar
+    fab -f despliegue/fabfile.py -H vagrant@ivgestion_vm.cloudapp.azure.com run
+
+Para hacerlo todo en una sola orden:
+
+    ./ivgestion.sh
 
 Vamos al navegador y probamos:
 
