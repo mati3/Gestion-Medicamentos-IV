@@ -2,19 +2,35 @@
   sudo: yes
   remote_user: vagrant   
   tasks:
-  - name: Actualizar sistema 
-    apt: update_cache=yes     	
+  
+  - name: Update System
+    apt: 
+      update_cache=yes  
+      upgrade=yes  
+       	
   - name: Install git 
     apt: pkg=git state=present 
   - name: Clonar
     git:  repo=https://github.com/mati3/Gestion-Medicamentos-IV.git dest=Gestion-Medicamentos-IV/ clone=yes force=yes  
-  - name: Build-essential
-    apt: pkg=build-essential state=present     
-  - name: Instala Ruby
-    apt: pkg=ruby state=present
-  - gem:
-        name=sinatra
-        state=latest
-  - gem:
-        name=bundle
-        state=latest
+    
+  - name: Install dependencies 
+    apt: pkg={{item}} state=latest
+    with_items:
+      - build-essential
+      - ruby
+      - rubygems
+  
+  - gem: 
+      name=rake 
+      state=present
+          
+  - name: Install bundle  
+    become: yes
+    command: 
+      bash -lc "gem install bundle"
+      
+  - bundler:
+      state=present
+      gemfile=Gestion-Medicamentos-IV/Gemfile
+      deployment_mode=yes
+
