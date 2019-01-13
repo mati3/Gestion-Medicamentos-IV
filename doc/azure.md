@@ -186,7 +186,7 @@ Creamos la maquina virtual y todo lo necesario en Azure desde nuestra terminal:
 
 ### Fabric
 
-Para facilitar la implementación y la administración usamos Fabric.
+Para facilitar la administración y automatizar el despliegue en remoto, usamos Fabric.
 
 Instalo con la orden "sudo pip install -U 'fabric<2' ".
 
@@ -214,9 +214,16 @@ Creamos una carpeta llamada "despliegue" donde generamos nuestro "fabfile.py", e
 
 Para probar la ejecución de nuestra aplicación con Fabric ejecutamos desde terminal:
 
-    fab -f despliegue/fabfile.py -H vagrant@ivgestion_vm.cloudapp.azure.com run
+    fab -f despliegue/fabfile.py -H vagrant@ivgestion.westeurope.cloudapp.azure.com Run
 
-Para hacerlo todo en una sola orden:
+Para hacerlo todo en una sola orden, creamos un script que levanta vagrant y despliega con fabric:
+
+      #!/bin/bash
+
+      vagrant up --provider=azure
+      fab -f despliegue/fabfile.py -H vagrant@ivgestion.westeurope.cloudapp.azure.com Run
+
+Ejecutamos para comprobar mi aplicación:
 
     ./ivgestion.sh
 

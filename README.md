@@ -82,10 +82,12 @@ Enlace a [DockerHub](https://hub.docker.com/r/mati331/gestion-medicamentos-iv/)
 
 ### Despliegue en la nube de Azure
 
-Hemos utilizado Azure como LaaS, hemos hecho la orquestación de maquinas virtuales desde Vagrant y el aprovisionamiento del mismo con Ansible, el despliegue con Fabric. 
-[Enlace a la documentación de Vagrant](doc/vagrantfile.md)
+Hemos utilizado Azure como LaaS, hemos hecho la orquestación de maquinas virtuales desde Vagrant y el aprovisionamiento del mismo con Ansible, el despliegue con Fabric.
+
+[Enlace a la documentación especifica de Vagrant](doc/vagrantfile.md)
+
 [Enlace a la documentación del despliegue](https://github.com/mati3/Gestion-Medicamentos-IV/blob/master/doc/azure.md)
 
-Despliegue final: 104.45.66.250
+Despliegue final: 13.94.145.191
 
-URL Despliegue final: http://ivgestion-ip.westeurope.cloudapp.azure.com/
+URL Despliegue final: http://ivgestion.westeurope.cloudapp.azure.com/

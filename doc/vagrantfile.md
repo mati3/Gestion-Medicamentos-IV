@@ -33,10 +33,11 @@ El orden de los pasos correctos para instalar Vagrant con Azure, serían:
 		    azure.client_secret = ENV['AZURE_CLIENT_SECRET']
 		    azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 
-		    azure.resource_group_name = 'ivgestiongroup'
-		    azure.location = 'westeurope'
-		    azure.vm_size = 'Standard_DS1_v2'
-		    azure.tcp_endpoints = '80'
+				azure.vm_name = 'ivgestion'
+				azure.resource_group_name = 'ivgestiongroup'
+				azure.location = 'westeurope'
+				azure.vm_size = 'Standard_DS1_v2'
+				azure.tcp_endpoints = '80'
 
 		  end
 
@@ -114,6 +115,8 @@ con esta información volvemos a preguntar con "az vm image list --location west
 		UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201612140  16.04.201612140
 
 Nosotros no vamos a poner ninguna imagen especifica, instalará por defecto UbuntuServer Canonical 16.04-LTS Latest. [Para mas información](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage)
+
+**azure.vm_name = 'ivgestion' -** le damos nombre a nuestra maquina virtual, para saberlo de antemano y poder automatizar aprovisionamiento y despliegue en un solo archivo, para ejecutar la practica con una sola orden.
 
 **azure.resource_group_name = 'ivgestiongroup' -** nombre del grupo de gestión de mi aplicación.
 
