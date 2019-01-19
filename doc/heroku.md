@@ -23,7 +23,7 @@ Ya tenemos la respuesta esperada:
 
 ![imagen](img/heroku10.png)
 
-** Documentos necesarios **
+**Documentos necesarios**
 
 Necesitaremos un archivo Procfile junto con  config.ru para decirle a Heroku cómo ejecutar nuestra aplicación.
 
@@ -44,9 +44,9 @@ Necesitaremos un archivo Procfile junto con  config.ru para decirle a Heroku có
 
 ### Tenemos dos formas de iniciar la aplicación:
 
- ** Desde el navegador **
+**Desde el navegador**
 
-** Desde la terminal: **
+**Desde la terminal:**
 
 * heroku login
 
@@ -60,15 +60,15 @@ Necesitaremos un archivo Procfile junto con  config.ru para decirle a Heroku có
       Creating ⬢ app-gestion-medicamentos... !
       Name app-gestion-medicamentos is already taken
 
-** se puede probar de forma local o remota **
+**se puede probar de forma local o remota**
 
-** Local **
+**Local**
 
 * heroku local web
 
 ![imagen](img/localhost_local.png)
 
-** Remota **
+**Remota**
 
 * git push heroku master
 
@@ -92,7 +92,7 @@ heroku logs -n 200  //los ultimos 200 logs
 
 ### Para terminar vamos a incluir un json para que nos devuelva "status ok"
 
-** Ahora nuestro archivo sinatra/myapp.ruby tiene este aspecto **
+**Ahora nuestro archivo sinatra/myapp.ruby tiene este aspecto**
 
       require 'sinatra'
       require 'json'
