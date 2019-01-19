@@ -17,11 +17,11 @@
 
 **Nuestra primera aplicación tiene solo un archivo que incluiremos en la carpeta llamada sinatra, en el repositorio del proyecto. Es un simple hola mundo para ver que todo funciona.**
 
-![imagen](/img/sinatra.png)
+![imagen](img/sinatra.png)
 
 **Prueba de funcionamiento:**
 
-![imagen](/img/sinatra2.png)
+![imagen](img/sinatra2.png)
 
 
  **Mas adelante vamos a usar plantilla erb que como viene incluida en ruby no genera ninguna dependencia.**
